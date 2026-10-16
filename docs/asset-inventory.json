@@ -1,0 +1,37 @@
+{
+  "baselineCommit": "9edb4ea",
+  "originalHtmlBytes": 10754371,
+  "refactoredHtmlBytes": 71797,
+  "assets": [
+    {
+      "path": "assets/brand/ssi-logo.png",
+      "bytes": 262730,
+      "sha256": "c4fd371e522b2208e6ebf6c89c7814c9033e03e8efdc85a326491658ec293953"
+    },
+    {
+      "path": "assets/hero/bui-thanh-cong.png",
+      "bytes": 3652619,
+      "sha256": "f3fb4dd011d48fac20d8c200751bd914768446db9ebda05eb630640aba9345e2"
+    },
+    {
+      "path": "assets/brand/ssi-campaign.png",
+      "bytes": 3226528,
+      "sha256": "328f338ddfb60fc994b0d097675441dade0c62c52adf845d93e90130c867268e"
+    },
+    {
+      "path": "assets/brand/ssi-qr.png",
+      "bytes": 10231,
+      "sha256": "e6cc444db89ef6fcfa8394855f29e53164f73dfd07cdaecec8470691cc31fa70"
+    },
+    {
+      "path": "assets/fonts/montserrat-vietnamese-normal.ttf",
+      "bytes": 394140,
+      "sha256": "e5b1a3fbac6e5bf9f20860f9a254abe39240439f445568d8cd37482789e5dcac"
+    },
+    {
+      "path": "assets/fonts/montserrat-vietnamese-italic.ttf",
+      "bytes": 404112,
+      "sha256": "692f6f6996bf8b425a4fc2ad154b81195f830f2d22bc26e68dfdeed0f11e6920"
+    }
+  ]
+}

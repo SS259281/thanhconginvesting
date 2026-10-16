@@ -1,0 +1,47 @@
+/* Interaction fixes follow the preserved legacy cascade. Core colors stay locked. */
+[hidden] { display: none !important; }
+.private-drawer-panel { overscroll-behavior: contain; }
+.private-chat-panel { overscroll-behavior: contain; }
+.private-chat-panel .private-chat-messages { min-height: 0; overscroll-behavior: contain; }
+.private-offer-clock strong { font-variant-numeric: tabular-nums; }
+.tci-schedule-error { color: var(--private-wine); font-size: .8rem; }
+.tci-form-handoff { margin-top: 1rem; }
+
+@media (max-width: 768px) {
+  .private-sticky-cta {
+    padding-bottom: calc(10px + env(safe-area-inset-bottom, 0px));
+  }
+  .private-chat-launcher {
+    bottom: calc(82px + env(safe-area-inset-bottom, 0px));
+  }
+  body.tci-drawer-open .private-chat-launcher,
+  body.tci-chat-open .private-sticky-cta,
+  body.tci-modal-open .private-sticky-cta,
+  body.tci-modal-open .private-chat-launcher { visibility: hidden; pointer-events: none; }
+  .private-chat-panel {
+    bottom: calc(10px + var(--tci-chat-keyboard-offset, 0px) + env(safe-area-inset-bottom, 0px));
+    max-height: calc(var(--tci-chat-visible-height, 100dvh) - 28px - env(safe-area-inset-bottom, 0px));
+    max-width: calc(100vw - 20px);
+  }
+  .private-chat-panel.is-open { display: flex; flex-direction: column; }
+  .private-chat-panel > header,
+  .private-chat-panel > form,
+  .private-chat-panel > .tci-chat-security { flex-shrink: 0; }
+  .private-chat-panel .private-chat-messages { flex: 1 1 auto; overflow-y: auto; }
+  .private-chat-quick-actions { flex-shrink: 1; overflow-y: auto; max-height: 32dvh; }
+  .private-chat-panel input,
+  .private-lead-form input,
+  .private-lead-form select,
+  .private-scheduler-grid input,
+  .private-scheduler-grid select { font-size: 16px; }
+  .private-chat-panel button[aria-label],
+  .tci-payment-close,
+  .private-day-selector button { min-height: 44px; min-width: 44px; }
+  .tci-payment-dialog { max-height: calc(100dvh - 20px); }
+  .tci-payment-scroll { max-height: calc(100dvh - 120px); overscroll-behavior: contain; }
+  .private-drawer-panel { padding-bottom: calc(28px + env(safe-area-inset-bottom, 0px)); }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after { scroll-behavior: auto !important; }
+}

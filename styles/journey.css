@@ -1,0 +1,634 @@
+/* The original content remains in document flow. Only its visual setting is enhanced. */
+.private-page .tci-journey-entry {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  min-height: 44px;
+  margin-top: 16px;
+  color: var(--private-champagne, #f3d79b);
+  font-size: .78rem;
+  font-weight: 600;
+  line-height: 1.6;
+}
+.tci-journey-flow {
+  --tci-story-header: var(--tci-journey-header-height, 88px);
+  --tci-story-edge: rgba(214, 168, 74, .23);
+  position: relative;
+  isolation: auto;
+  background: transparent;
+}
+.tci-journey-stage {
+  display: contents;
+}
+.tci-journey-scene,
+.tci-journey-vignette {
+  position: fixed;
+  inset: var(--tci-story-header, 88px) 0 0;
+  visibility: hidden;
+  opacity: 0;
+  pointer-events: none;
+}
+.tci-journey-scene {
+  z-index: 0;
+  background: radial-gradient(ellipse at 80% 40%, rgba(11, 30, 59, .65), transparent 55%),
+    radial-gradient(ellipse at 70% 80%, rgba(90, 10, 10, .2), transparent 50%), #0b0b0c;
+}
+.tci-journey-scene canvas {
+  display: block;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+}
+.tci-journey-vignette {
+  z-index: 1;
+  background: linear-gradient(90deg, rgba(11, 11, 12, .85), rgba(11, 11, 12, .54) 35%,
+    rgba(11, 11, 12, .06) 68%, rgba(11, 11, 12, .2)),
+    linear-gradient(180deg, rgba(11, 11, 12, .26), transparent 30%, transparent 76%, rgba(11, 11, 12, .46));
+}
+body.tci-journey-enabled.tci-story-active .tci-journey-scene,
+body.tci-journey-enabled.tci-story-active .tci-journey-vignette {
+  visibility: visible;
+  opacity: 1;
+}
+.tci-journey-hud {
+  position: fixed;
+  z-index: 30;
+  top: calc(var(--tci-story-header, 88px) + 20px);
+  right: 20px;
+  bottom: 98px;
+  width: 158px;
+  display: none;
+  flex-direction: column;
+  justify-content: center;
+  gap: 16px;
+  pointer-events: none;
+}
+body.tci-journey-available .tci-journey-hud:not([hidden]) {
+  display: flex;
+}
+.tci-journey-rail {
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+  gap: 5px;
+  overflow-y: auto;
+  scrollbar-width: thin;
+  scrollbar-color: rgba(214, 168, 74, .24) transparent;
+  pointer-events: auto;
+}
+.tci-journey-rail a {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  gap: 10px;
+  flex: 0 0 auto;
+  min-height: 44px;
+  min-width: 44px;
+  padding: 0;
+  color: rgba(248, 242, 231, .63);
+  font-size: 13px;
+  font-weight: 550;
+  line-height: 1.5;
+  text-decoration: none;
+}
+.tci-journey-rail a > span:first-child {
+  display: grid;
+  place-items: center;
+  width: 38px;
+  height: 36px;
+  flex: none;
+  order: 2;
+  font-size: .7rem;
+  font-variant-numeric: tabular-nums;
+  border: 1px solid rgba(214, 168, 74, .22);
+  background: rgba(11, 11, 12, .9);
+}
+.tci-journey-rail a > span:nth-child(2) {
+  padding: 4px 7px;
+  background: rgba(11, 11, 12, .82);
+}
+.tci-journey-rail a.is-current,
+.tci-journey-rail a[aria-current="location"] {
+  color: var(--private-champagne, #f3d79b);
+}
+.tci-journey-rail a.is-current > span:first-child,
+.tci-journey-rail a[aria-current="location"] > span:first-child {
+  border-color: var(--private-gold, #d6a84a);
+  background: linear-gradient(145deg, rgba(214, 168, 74, .16), rgba(11, 11, 12, .9));
+}
+.tci-journey-options {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: flex-end;
+  align-items: center;
+  gap: 4px;
+  pointer-events: auto;
+}
+.tci-journey-options a,
+.tci-journey-options button {
+  display: inline-flex;
+  justify-content: center;
+  align-items: center;
+  gap: 6px;
+  min-height: 44px;
+  padding: 7px 9px;
+  color: var(--private-champagne, #f3d79b);
+  background: rgba(11, 11, 12, .86);
+  border: 1px solid rgba(214, 168, 74, .23);
+  border-radius: 0;
+  font: inherit;
+  font-size: 13px;
+  line-height: 1.5;
+  font-weight: 550;
+  text-decoration: none;
+  cursor: pointer;
+}
+.tci-journey-hud :focus-visible {
+  outline: 2px solid var(--private-champagne, #f3d79b);
+  outline-offset: 3px;
+}
+.tci-journey-progress {
+  height: 2px;
+  flex: 0 0 2px;
+  width: 100%;
+  background: rgba(214, 168, 74, .19);
+}
+.tci-journey-progress span {
+  display: block;
+  width: 100%;
+  height: 100%;
+  background: var(--private-gold, #d6a84a);
+  transform: scaleX(var(--journey-progress, 0));
+  transform-origin: 0 50%;
+}
+body.tci-journey-available:not(.tci-journey-enabled) .tci-journey-hud {
+  top: calc(var(--tci-story-header, 88px) + 14px);
+  bottom: auto;
+  justify-content: flex-start;
+  gap: 0;
+}
+body.tci-journey-available:not(.tci-journey-enabled) .tci-journey-rail,
+body.tci-journey-available:not(.tci-journey-enabled) .tci-journey-progress,
+body.tci-journey-available:not(.tci-journey-enabled) .tci-journey-options a {
+  display: none;
+}
+body.tci-journey-enabled[data-tci-story-layout="wide"] .tci-journey-hud {
+  top: calc(var(--tci-story-header, 88px) + 14px);
+  bottom: auto;
+  height: auto;
+  justify-content: flex-end;
+  gap: 0;
+  background: transparent;
+  border: 0;
+}
+body.tci-journey-enabled[data-tci-story-layout="wide"] .tci-journey-rail,
+body.tci-journey-enabled[data-tci-story-layout="wide"] .tci-journey-progress,
+body.tci-journey-enabled[data-tci-story-layout="wide"] .tci-journey-options a {
+  display: none;
+}
+
+/* Enhanced layout applies only to the original marked sections. */
+body.tci-journey-enabled [data-journey-section] {
+  position: relative;
+  z-index: 2;
+  min-height: 82svh;
+  padding-block: clamp(80px, 7vw, 108px);
+  background: transparent;
+  overflow: visible;
+  border-block: 0;
+  scroll-margin-top: calc(var(--tci-story-header, 88px) + 18px);
+}
+body.tci-journey-enabled [data-journey-section]::after {
+  display: none;
+}
+body.tci-journey-enabled [data-journey-section] > .private-container {
+  position: relative;
+  z-index: 2;
+  width: min(1280px, 100% - 64px);
+  margin-inline: auto;
+  padding: clamp(28px, 3vw, 42px);
+  background: linear-gradient(130deg, rgba(18, 19, 23, .93), rgba(11, 11, 12, .91));
+  border: 1px solid var(--tci-story-edge, rgba(214, 168, 74, .23));
+  box-shadow: 0 22px 65px rgba(0, 0, 0, .2);
+}
+body.tci-journey-enabled [data-journey-layout="compact"] > .private-container {
+  width: min(794px, calc((100% - 64px) * .62));
+  margin-left: max(32px, calc((100% - 1280px) / 2));
+  margin-right: auto;
+}
+body.tci-journey-enabled [data-journey-layout="wide"] > .private-container {
+  background: linear-gradient(135deg, rgba(18, 19, 23, .95), rgba(11, 11, 12, .88));
+  width: min(1280px, 100% - 64px);
+}
+body.tci-journey-enabled [data-journey-section] [data-private-reveal] {
+  opacity: 1;
+  transform: none;
+}
+body.tci-journey-enabled [data-journey-section] :is(.private-problem-grid article, .private-pathway-card, .private-benefit-grid article, .private-process-grid li) {
+  opacity: 1 !important;
+  transform: none !important;
+  animation: none !important;
+}
+body.tci-journey-enabled :is(.private-hero, .private-course, .private-lead-section, .private-faq, .private-final-cta, .private-footer) {
+  position: relative;
+  z-index: 2;
+}
+body.tci-journey-enabled [data-journey-section] .private-section-heading h2,
+body.tci-journey-enabled [data-journey-section] .private-about-copy h2,
+body.tci-journey-enabled [data-journey-section] .private-service-layout h2 {
+  font-size: clamp(2.1rem, 3.1vw, 3.25rem);
+  line-height: 1.18;
+}
+body.tci-journey-enabled [data-journey-layout="compact"] .private-section-heading-split,
+body.tci-journey-enabled [data-journey-layout="compact"] .private-service-layout {
+  grid-template-columns: minmax(0, 1fr);
+  gap: 24px;
+}
+body.tci-journey-enabled [data-journey-layout="compact"] .private-centered-heading {
+  text-align: left;
+}
+body.tci-journey-enabled [data-journey-layout="compact"] .private-centered-heading h2,
+body.tci-journey-enabled [data-journey-layout="compact"] .private-centered-heading p {
+  margin-left: 0;
+}
+body.tci-journey-enabled .private-problem-section[data-journey-section] .private-problem-grid {
+  grid-template-columns: minmax(0, 1fr);
+  gap: 12px;
+}
+body.tci-journey-enabled .private-problem-section[data-journey-section] .private-problem-grid article {
+  min-height: 0;
+  padding: 25px 24px 25px 106px;
+}
+body.tci-journey-enabled .private-problem-section[data-journey-section] .private-card-number {
+  position: absolute;
+  left: 24px;
+  top: 24px;
+  font-size: 3.35rem !important;
+}
+body.tci-journey-enabled .private-problem-section[data-journey-section] .private-problem-grid h3 {
+  margin-top: 0;
+}
+body.tci-journey-enabled .private-problem-section[data-journey-section] .private-principle-quote {
+  margin-top: 42px !important;
+  padding-inline: 6px;
+  font-size: clamp(1.15rem, 1.6vw, 1.5rem);
+}
+body.tci-journey-enabled #private-pathways[data-journey-section] .private-pathway-grid {
+  gap: 16px;
+}
+body.tci-journey-enabled #private-pathways[data-journey-section] .private-pathway-card {
+  min-height: 430px;
+  padding: 30px 24px 24px;
+}
+body.tci-journey-enabled #private-pathways[data-journey-section] .private-pathway-card h3 {
+  max-width: 100%;
+  font-size: 1.65rem;
+  line-height: 1.3;
+}
+body.tci-journey-enabled #private-pathways[data-journey-section] .private-pathway-number {
+  font-size: 5rem;
+  top: 24px;
+  right: 16px;
+}
+body.tci-journey-enabled #private-ssi[data-journey-section] .private-benefit-grid {
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 0 24px;
+}
+body.tci-journey-enabled #private-ssi[data-journey-section] .private-benefit-grid article {
+  min-height: 225px;
+}
+body.tci-journey-enabled #private-ssi[data-journey-section] .private-promo-card {
+  grid-template-columns: minmax(180px, .65fr) minmax(0, 1fr);
+  gap: 20px;
+  padding: 16px;
+}
+body.tci-journey-enabled #private-ssi[data-journey-section] .private-promo-card > a {
+  grid-column: 2;
+  justify-self: start;
+}
+body.tci-journey-enabled #private-service[data-journey-section] .private-service-layout > div:last-child {
+  padding: 22px 0 0;
+  border-left: 0;
+  border-top: 1px solid var(--tci-story-edge);
+}
+body.tci-journey-enabled #private-community[data-journey-section] .private-community-card {
+  border-color: rgba(214, 168, 74, .24);
+  background: linear-gradient(125deg, rgba(11, 30, 59, .72), rgba(11, 11, 12, .66));
+  box-shadow: none;
+}
+body.tci-journey-enabled #private-community[data-journey-section] .private-community-copy {
+  padding: 38px 30px;
+}
+body.tci-journey-enabled #private-community[data-journey-section] .private-community-copy h2 {
+  font-size: clamp(1.8rem, 2.7vw, 2.65rem);
+}
+body.tci-journey-enabled #private-insights[data-journey-section] {
+  background: transparent;
+}
+body.tci-journey-enabled #private-insights[data-journey-section]::before {
+  display: none;
+}
+body.tci-journey-enabled .private-process-section[data-journey-section] .private-process-grid {
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+}
+body.tci-journey-enabled .private-process-section[data-journey-section] .private-process-grid li {
+  min-height: 226px;
+  padding: 26px 20px;
+}
+body.tci-journey-enabled .private-process-section[data-journey-section] .private-process-grid h3 {
+  margin-top: 34px;
+}
+body.tci-journey-enabled .tci-journey-flow > .private-proof-strip {
+  position: relative;
+  z-index: 2;
+}
+
+@media (max-width: 1199px) and (min-width: 1024px) {
+  body.tci-journey-enabled [data-journey-layout="compact"] > .private-container {
+    width: calc((100% - 48px) * .65);
+    margin-left: 24px;
+    padding: 28px;
+  }
+  .tci-journey-hud {
+    width: 44px;
+    right: 14px;
+  }
+  .tci-journey-rail a > span:nth-child(2) {
+    display: none;
+  }
+  .tci-journey-options {
+    width: 150px;
+    align-self: flex-end;
+  }
+}
+@media (max-width: 1023px) {
+  .tci-journey-flow {
+    --tci-story-header: var(--tci-journey-header-height, 76px);
+  }
+  body.tci-journey-enabled [data-journey-section] {
+    min-height: 74svh;
+    padding-block: 74px;
+  }
+  body.tci-journey-enabled [data-journey-section] > .private-container,
+  body.tci-journey-enabled [data-journey-layout="compact"] > .private-container,
+  body.tci-journey-enabled [data-journey-layout="wide"] > .private-container {
+    width: calc(100% - 48px);
+    margin-inline: 24px;
+    padding: 32px;
+    background: linear-gradient(130deg, rgba(18, 19, 23, .95), rgba(11, 11, 12, .9));
+  }
+  .tci-journey-hud {
+    right: 12px;
+    width: 44px;
+  }
+  .tci-journey-rail a > span:nth-child(2) {
+    display: none;
+  }
+  .tci-journey-options {
+    align-self: flex-end;
+    width: 150px;
+  }
+}
+@media (max-width: 767px) {
+  .private-hero-copy > .tci-journey-entry {
+    order: 9;
+    font-size: 13px;
+  }
+  .tci-journey-flow {
+    --tci-story-header: var(--tci-journey-header-height, 68px);
+  }
+  .tci-journey-vignette {
+    background: linear-gradient(180deg, rgba(11, 11, 12, .24), rgba(11, 11, 12, .07) 18%,
+      rgba(11, 11, 12, .92) 38%, #0b0b0c 70%);
+  }
+  .tci-journey-hud {
+    top: calc(var(--tci-story-header, 68px) + 8px);
+    bottom: auto;
+    left: 12px;
+    right: 12px;
+    width: auto;
+    height: 48px;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    gap: 8px;
+    padding: 2px 0;
+    background: rgba(11, 11, 12, .8);
+    border-bottom: 1px solid rgba(214, 168, 74, .19);
+  }
+  body.tci-journey-available:not(.tci-journey-enabled) .tci-journey-hud {
+    justify-content: flex-end;
+    background: transparent;
+    border: 0;
+  }
+  .tci-journey-rail {
+    min-width: 0;
+    flex: 1 1 auto;
+    flex-direction: row;
+    justify-content: flex-start;
+    gap: 1px;
+    overflow-x: auto;
+    overflow-y: hidden;
+    scrollbar-width: none;
+  }
+  .tci-journey-rail a {
+    justify-content: center;
+    min-width: 44px;
+    min-height: 44px;
+    gap: 0;
+  }
+  .tci-journey-rail a > span:first-child {
+    order: 0;
+    width: 34px;
+    height: 30px;
+    border-width: 0 0 1px;
+    background: rgba(11, 11, 12, .56);
+  }
+  .tci-journey-options {
+    width: auto;
+    flex: 0 0 auto;
+    align-self: auto;
+    flex-wrap: nowrap;
+  }
+  .tci-journey-options button {
+    padding-inline: 8px;
+    border: 0;
+    background: transparent;
+  }
+  .tci-journey-options a {
+    display: none;
+  }
+  .tci-journey-progress {
+    display: none;
+  }
+  body.tci-journey-enabled [data-journey-section] {
+    min-height: 0;
+    padding: 72px 0 54px;
+    scroll-margin-top: calc(var(--tci-story-header, 68px) + 62px);
+  }
+  body.tci-journey-enabled [data-journey-layout="compact"] {
+    padding-top: 164px;
+  }
+  body.tci-journey-enabled #private-principles[data-journey-section] {
+    padding-top: 208px;
+  }
+  body.tci-journey-enabled [data-journey-section] > .private-container,
+  body.tci-journey-enabled [data-journey-layout="compact"] > .private-container,
+  body.tci-journey-enabled [data-journey-layout="wide"] > .private-container {
+    width: calc(100% - 32px);
+    margin-inline: 16px;
+    padding: 26px 18px;
+    background: rgba(11, 11, 12, .97);
+  }
+  body.tci-journey-enabled [data-journey-section] .private-section-heading h2,
+  body.tci-journey-enabled [data-journey-section] .private-about-copy h2,
+  body.tci-journey-enabled [data-journey-section] .private-service-layout h2 {
+    font-size: clamp(1.8rem, 7vw, 2.35rem);
+    line-height: 1.25;
+  }
+  body.tci-journey-enabled .private-problem-section[data-journey-section] .private-problem-grid article {
+    padding: 24px 0;
+  }
+  body.tci-journey-enabled .private-problem-section[data-journey-section] .private-card-number {
+    position: relative;
+    top: auto;
+    left: auto;
+    margin-bottom: 22px;
+    font-size: 3.1rem !important;
+  }
+  body.tci-journey-enabled #private-pathways[data-journey-section] .private-pathway-grid,
+  body.tci-journey-enabled #private-ssi[data-journey-section] .private-benefit-grid,
+  body.tci-journey-enabled .private-process-section[data-journey-section] .private-process-grid {
+    grid-template-columns: minmax(0, 1fr);
+  }
+  body.tci-journey-enabled #private-ssi[data-journey-section] .private-promo-card {
+    grid-template-columns: minmax(0, 1fr);
+    padding: 14px;
+  }
+  body.tci-journey-enabled #private-ssi[data-journey-section] .private-promo-card > a {
+    grid-column: 1;
+  }
+  body.tci-journey-enabled #private-community[data-journey-section] .private-community-copy {
+    padding: 28px 18px;
+  }
+  body.tci-journey-enabled #private-proof[data-journey-section] .private-kpi-grid-spotlight strong {
+    font-size: clamp(2.1rem, 10vw, 3.5rem);
+  }
+  body.tci-journey-enabled .private-process-section[data-journey-section] .private-process-grid li {
+    min-height: 0;
+    padding: 24px 16px 24px 78px;
+  }
+  body.tci-journey-enabled .private-process-section[data-journey-section] .private-process-grid li > span {
+    left: 10px;
+    top: 24px;
+    font-size: 2.2rem !important;
+  }
+  body.tci-journey-enabled .private-process-section[data-journey-section] .private-process-grid h3 {
+    margin-top: 0;
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  .tci-journey-scene,
+  .tci-journey-vignette,
+  .tci-journey-hud {
+    display: none !important;
+  }
+}
+
+/* ---------- City film (10/2026): chapter title cards between sections ---------- */
+.tci-journey-interlude {
+  display: none;
+}
+body.tci-journey-enabled .tci-journey-interlude {
+  --interlude: 0;
+  position: relative;
+  z-index: 2;
+  display: grid;
+  place-content: center;
+  justify-items: center;
+  gap: 14px;
+  height: 92svh;
+  padding: 0 24px;
+  text-align: center;
+  pointer-events: none;
+  opacity: var(--interlude);
+  transform: translateY(calc((1 - var(--interlude)) * 26px)) scale(calc(.97 + var(--interlude) * .03));
+  will-change: opacity, transform;
+}
+body.tci-journey-enabled .tci-journey-interlude .tci-interlude-index {
+  display: inline-flex;
+  align-items: center;
+  gap: 14px;
+  color: var(--private-gold, #d6a84a);
+  font-size: .78rem;
+  font-weight: 600;
+  letter-spacing: .32em;
+  text-transform: uppercase;
+}
+body.tci-journey-enabled .tci-journey-interlude .tci-interlude-index::before,
+body.tci-journey-enabled .tci-journey-interlude .tci-interlude-index::after {
+  content: "";
+  width: 46px;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, var(--private-gold, #d6a84a));
+}
+body.tci-journey-enabled .tci-journey-interlude .tci-interlude-index::after {
+  transform: scaleX(-1);
+}
+body.tci-journey-enabled .tci-journey-interlude strong {
+  color: var(--private-ivory, #f8f2e7);
+  font-size: clamp(2.8rem, 6.4vw, 6.2rem);
+  font-weight: 600;
+  line-height: 1.05;
+  letter-spacing: -.02em;
+  text-shadow: 0 6px 40px rgba(0, 0, 0, .55);
+}
+body.tci-journey-enabled .tci-journey-interlude em {
+  max-width: 34ch;
+  color: var(--private-champagne, #f3d79b);
+  font-size: clamp(1rem, 1.5vw, 1.3rem);
+  font-style: normal;
+  font-weight: 400;
+  text-shadow: 0 2px 18px rgba(0, 0, 0, .7);
+}
+/* Let the film breathe: the vignette eases off while a title card is on screen. */
+.tci-journey-vignette {
+  transition: opacity .6s ease;
+}
+.tci-journey-vignette::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(ellipse 60% 55% at 50% 50%, rgba(6, 8, 14, .35), transparent 70%);
+  opacity: 0;
+  transition: opacity .6s ease;
+}
+body.tci-journey-enabled.tci-story-active.tci-story-interlude .tci-journey-vignette {
+  opacity: .25;
+}
+body.tci-journey-enabled.tci-story-active.tci-story-interlude .tci-journey-vignette::after {
+  opacity: 1;
+}
+/* Slightly translucent panels so the city keeps moving behind the content (no backdrop blur: too costly over a live canvas). */
+body.tci-journey-enabled [data-journey-section] > .private-container {
+  background: linear-gradient(130deg, rgba(14, 16, 22, .93), rgba(9, 10, 14, .88));
+}
+body.tci-journey-enabled [data-journey-section] {
+  min-height: 0;
+}
+.tci-journey-scene {
+  background: #06080e;
+}
+@media (max-width: 767px) {
+  body.tci-journey-enabled .tci-journey-interlude {
+    height: 72svh;
+  }
+  body.tci-journey-enabled [data-journey-layout="compact"],
+  body.tci-journey-enabled #private-principles[data-journey-section] {
+    padding-top: 72px;
+  }
+  body.tci-journey-enabled .tci-journey-interlude .tci-interlude-index::before,
+  body.tci-journey-enabled .tci-journey-interlude .tci-interlude-index::after {
+    width: 24px;
+  }
+}

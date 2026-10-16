@@ -1,0 +1,75 @@
+/* Optional decoration only: no core token definitions or selectors changing content layout. */
+[data-tci-event="tet"] > .tci-event-decoration {
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  overflow: hidden;
+  pointer-events: none;
+  user-select: none;
+}
+
+[data-tci-event="tet"] .tci-event-motif {
+  position: absolute;
+  top: 84px;
+  right: 12px;
+  width: 240px;
+  height: 180px;
+  max-width: 22vw;
+  object-fit: contain;
+  opacity: .24;
+  pointer-events: none;
+}
+
+[data-tci-event="tet"] .tci-event-badge {
+  position: absolute;
+  top: 98px;
+  left: max(24px, calc((100% - 1240px) / 2));
+  display: inline-block;
+  max-width: calc(100% - 48px);
+  padding: 5px 11px;
+  border: 1px solid var(--private-gold);
+  border-radius: 2px;
+  color: var(--private-champagne);
+  background: var(--private-obsidian);
+  font-family: inherit;
+  font-size: 11px;
+  line-height: 1.5;
+  letter-spacing: .06em;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  pointer-events: none;
+}
+
+/* Movement is opt-in separately from the event. A single transform affects only the decorative image. */
+[data-tci-event="tet"][data-tci-event-motion="gentle"] .tci-event-motif {
+  animation: tci-event-drift 8s ease-in-out infinite alternate;
+}
+
+@keyframes tci-event-drift {
+  from { transform: translateY(0); }
+  to { transform: translateY(5px); }
+}
+
+@media (max-width: 767px) {
+  [data-tci-event="tet"] .tci-event-badge {
+    top: 88px;
+    left: 20px;
+    max-width: calc(100% - 40px);
+    padding: 4px 8px;
+    font-size: 10px;
+  }
+
+  [data-tci-event="tet"] .tci-event-motif {
+    top: 76px;
+    right: -6px;
+    width: 72px;
+    height: 54px;
+    max-width: 34vw;
+    opacity: .18;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  [data-tci-event="tet"] .tci-event-motif { animation: none; transform: none; }
+}

@@ -1,0 +1,21 @@
+
+  .private-insights-section { color: #172335; background: linear-gradient(180deg, #f5f7fa 0%, #edf1f6 100%); }
+  .private-insights-header h2 { color: #172335; }
+  .private-insights-header .private-kicker { color: #b07b18; }
+  .private-insights-all { color: #8c101c; text-decoration: none; }
+  .private-insights-all:hover { color: #5d0b12; text-decoration: underline; }
+  .tci-chat-security { margin: .7rem 0 0; color: #69758a; font-size: .68rem; line-height: 1.45; }
+  .tci-chat-menu-link { display: inline-flex; align-items: center; justify-content: center; padding: .6rem .8rem; border: 1px solid #cfd6df; border-radius: 9px; color: #8c101c; font-weight: 800; font-size: .76rem; text-decoration: none; }
+  .tci-chat-menu-link:hover { background: #8c101c; color: #fff; }
+  .tci-chat-actions { display: flex; flex-wrap: wrap; gap: .45rem; margin-top: .65rem; }
+  .tci-chat-actions button { padding: .55rem .7rem; border: 1px solid #d7dde5; border-radius: 9px; color: #243146; background: #fff; cursor: pointer; font-size: .75rem; font-weight: 700; text-align: left; }
+  .tci-chat-actions button:hover { border-color: #8c101c; color: #8c101c; }
+  .tci-chat-lead { display: grid; gap: .55rem; margin-top: .65rem; }
+  .tci-chat-lead input, .tci-chat-lead select { width: 100%; padding: .65rem; border: 1px solid #cfd6df; border-radius: 8px; color: #172335; background: #fff; font-size: .78rem; }
+  .tci-chat-lead label { color: #4d5b70; font-size: .72rem; font-weight: 700; }
+  .tci-chat-lead label span { display: block; margin-bottom: .25rem; }
+  .tci-chat-lead button { padding: .7rem; border: 0; border-radius: 8px; color: #fff; background: #a20f19; font-weight: 800; cursor: pointer; }
+  .tci-chat-contact { color: #69758a; font-size: .7rem; line-height: 1.4; }
+  .tci-account-card__top strong { font-size: clamp(1.35rem, 3vw, 2rem); }
+  .tci-account-metrics { grid-template-columns: repeat(4, 1fr); }
+  @media (max-width: 650px) { .tci-account-metrics { grid-template-columns: repeat(2, 1fr); } }

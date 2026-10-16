@@ -1,0 +1,134 @@
+<!doctype html>
+<html lang="vi">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Chấm điểm cổ phiếu | Thành Công Investing</title>
+  <meta name="description" content="TCI Live Score: chỉ số tổng hợp tín hiệu kỹ thuật – thị trường cho cổ phiếu Việt Nam, cập nhật trong phiên." />
+  <link rel="icon" type="image/png" href="TCI-logo.png" />
+  <link rel="stylesheet" href="subpage-common.css" />
+  <link rel="stylesheet" href="styles/tci-score.css" />
+</head>
+<body class="tcs-page">
+  <header class="tci-site-header"><div class="tci-header-inner"><a class="tci-wordmark" href="index.html"><strong>THÀNH CÔNG</strong><span>INVESTING</span></a><nav class="tci-main-nav"><a href="index.html#private-about">Giới thiệu</a><a href="index.html#private-ssi">SSI 3186</a><a href="index.html#private-proof">Năng lực</a><a href="index.html#private-course">Khóa học</a><a href="index.html#private-service">Dịch vụ</a><a href="goc-nhin.html">Góc nhìn</a><a href="cham-diem.html" aria-current="page">Chấm điểm</a></nav><div class="tci-header-actions"><a class="tci-existing-link" href="index.html#private-pathways">Đang có tài khoản SSI?</a><a class="tci-open-account" href="https://www.ssi.com.vn/khach-hang-ca-nhan/mo-tai-khoan?mgm=3186" target="_blank" rel="noreferrer">Mở tài khoản</a><button class="tci-menu-button" type="button" aria-label="Mở menu">☰</button></div></div><nav class="tci-mobile-menu"><a href="index.html#private-about">Giới thiệu</a><a href="index.html#private-ssi">SSI 3186</a><a href="index.html#private-proof">Năng lực</a><a href="index.html#private-course">Khóa học</a><a href="index.html#private-service">Dịch vụ</a><a href="goc-nhin.html">Góc nhìn</a><a href="cham-diem.html" aria-current="page">Chấm điểm</a><a href="index.html#private-pathways">Đang có tài khoản SSI?</a></nav></header>
+
+  <main>
+    <section class="tcs-hero">
+      <div class="tcs-wrap">
+        <div class="tcs-hero-text">
+          <span class="tcs-kicker">TCI Live Score</span>
+          <h1>Chấm điểm cổ phiếu <b>trong phiên</b></h1>
+          <p>Điểm 0–100 tổng hợp xu hướng, sức mạnh tương đối, thanh khoản, rủi ro và dòng tiền trong phiên. Đây là chỉ số mô tả tín hiệu kỹ thuật, <strong>không phải khuyến nghị mua bán</strong>.</p>
+        </div>
+        <div class="tcs-status" id="tcs-status" role="status" aria-live="polite">
+          <span class="tcs-dot" aria-hidden="true"></span><span class="tcs-status-text">Đang kết nối…</span>
+          <span class="tcs-status-meta" id="tcs-status-meta"></span>
+        </div>
+      </div>
+    </section>
+
+    <div class="tcs-demo-banner" id="tcs-demo" hidden>DỮ LIỆU MÔ PHỎNG — mã SIMxx không phải cổ phiếu thật, chỉ dùng để kiểm thử giao diện.</div>
+
+    <section class="tcs-regime" aria-label="Bối cảnh thị trường">
+      <div class="tcs-wrap tcs-tiles" id="tcs-tiles">
+        <div class="tcs-tile"><span>Bối cảnh thị trường</span><strong data-k="label">—</strong><small data-k="label-sub">&nbsp;</small></div>
+        <div class="tcs-tile"><span>Xu hướng VNINDEX</span><strong data-k="trend">—</strong><small data-k="trend-sub">&nbsp;</small></div>
+        <div class="tcs-tile"><span>Độ rộng thị trường</span><strong data-k="breadth">—</strong><small data-k="breadth-sub">&nbsp;</small></div>
+        <div class="tcs-tile"><span>Thanh khoản so với TB 20 phiên</span><strong data-k="rvol">—</strong><small data-k="rvol-sub">cùng thời điểm trong ngày</small></div>
+        <div class="tcs-tile"><span>Trần / Sàn</span><strong data-k="limits">—</strong><small data-k="limits-sub">số mã</small></div>
+      </div>
+    </section>
+
+    <section class="tcs-board">
+      <div class="tcs-wrap">
+        <div class="tcs-controls" role="search">
+          <input id="f-search" class="tcs-input" type="search" placeholder="Tìm mã…" aria-label="Tìm mã cổ phiếu" autocomplete="off" />
+          <div class="tcs-seg" role="group" aria-label="Sàn" id="f-board">
+            <button type="button" class="is-active" data-v="">Tất cả</button><button type="button" data-v="HOSE">HOSE</button><button type="button" data-v="HNX">HNX</button><button type="button" data-v="UPCOM">UPCOM</button>
+          </div>
+          <select id="f-sector" class="tcs-select" aria-label="Ngành"><option value="">Mọi ngành</option></select>
+          <select id="f-min" class="tcs-select" aria-label="Điểm tối thiểu">
+            <option value="0">Mọi mức điểm</option><option value="40">≥ 40</option><option value="55">≥ 55</option><option value="70">≥ 70</option><option value="85">≥ 85</option>
+          </select>
+          <select id="f-conf" class="tcs-select" aria-label="Độ tin cậy tối thiểu">
+            <option value="0">Mọi độ tin cậy</option><option value="50">Tin cậy ≥ 50</option><option value="70">Tin cậy ≥ 70</option>
+          </select>
+          <label class="tcs-check"><input type="checkbox" id="f-eligible" checked /> Chỉ mã đủ điều kiện xếp hạng</label>
+          <label class="tcs-check"><input type="checkbox" id="f-hideflags" /> Ẩn mã có cờ cảnh báo</label>
+        </div>
+
+        <div class="tcs-table-meta"><span id="tcs-count">—</span><span class="tcs-legend" id="tcs-legend"></span></div>
+
+        <div class="tcs-table-wrap">
+          <table class="tcs-table" id="tcs-table">
+            <thead>
+              <tr>
+                <th scope="col" class="c-rank">#</th>
+                <th scope="col" data-sort="s" class="c-sym">Mã</th>
+                <th scope="col" data-sort="b" class="c-board">Sàn</th>
+                <th scope="col" data-sort="i" class="c-ind">Ngành</th>
+                <th scope="col" data-sort="sc" class="c-score is-sorted" aria-sort="descending">TCI Score</th>
+                <th scope="col" data-sort="d5" class="c-num">Δ 5'</th>
+                <th scope="col" data-sort="cf" class="c-num">Tin cậy</th>
+                <th scope="col" data-sort="ne" class="c-blocks">Nền · Nhịp</th>
+                <th scope="col" class="c-groups">Nhóm A–I</th>
+                <th scope="col" data-sort="rv" class="c-num">RVOL</th>
+                <th scope="col" class="c-px" data-raw>Giá · %</th>
+                <th scope="col" class="c-flags">Cờ</th>
+              </tr>
+            </thead>
+            <tbody id="tcs-tbody"></tbody>
+          </table>
+          <div class="tcs-empty" id="tcs-empty" hidden>Không có mã phù hợp bộ lọc.</div>
+        </div>
+        <button type="button" class="tcs-more" id="tcs-more" hidden>Xem thêm</button>
+      </div>
+    </section>
+
+    <section class="tcs-method" id="phuong-phap">
+      <div class="tcs-wrap">
+        <details>
+          <summary><h2>Phương pháp chấm điểm</h2><span>Bộ quy tắc <b id="tcs-version">—</b> · 100 điểm = 60 điểm nền + 40 điểm nhịp phiên</span></summary>
+          <div class="tcs-method-grid">
+            <div>
+              <h3>Trọng số</h3>
+              <table class="tcs-weights" id="tcs-weights"><thead><tr><th>Nhóm</th><th>Khối</th><th>Điểm</th></tr></thead><tbody></tbody></table>
+            </div>
+            <div>
+              <h3>Cách đọc</h3>
+              <ul class="tcs-bullets">
+                <li><b>Điểm nền</b> (xu hướng, sức mạnh tương đối, thanh khoản, rủi ro) thay đổi chậm; <b>điểm nhịp phiên</b> (VWAP, khối lượng, sổ lệnh, dòng khớp, khối ngoại) thay đổi liên tục.</li>
+                <li>Mỗi tiêu chí được chấm liên tục giữa các mốc, các biến phụ thuộc biên độ được chuẩn hóa theo sàn (HOSE ±7%, HNX ±10%, UPCOM ±15%).</li>
+                <li><b>Tin cậy</b> cho biết mức đầy đủ và ổn định của dữ liệu — không cộng vào điểm.</li>
+                <li>Mã chạm trần/sàn, phiên định kỳ, hết room ngoại có quy tắc trung tính riêng và được gắn cờ.</li>
+                <li>Điểm hiển thị được làm mượt (≈30 giây); nhãn chỉ đổi khi điểm vượt ngưỡng ít nhất 2 điểm và duy trì từ 60 giây để tránh nhấp nháy.</li>
+                <li>Hai mã cùng điểm có thể khác nhau: luôn xem phần chi tiết “Vì sao được điểm này”.</li>
+              </ul>
+              <h3>Nhãn</h3>
+              <div class="tcs-label-list" id="tcs-label-list"></div>
+            </div>
+          </div>
+        </details>
+        <p class="tcs-disclaimer" id="tcs-disclaimer"></p>
+      </div>
+    </section>
+  </main>
+
+  <aside class="tcs-drawer" id="tcs-drawer" aria-hidden="true" aria-labelledby="tcs-d-title" role="dialog" aria-modal="true" tabindex="-1">
+    <div class="tcs-drawer-scrim" data-close></div>
+    <div class="tcs-drawer-panel">
+      <header class="tcs-d-head">
+        <div><h2 id="tcs-d-title">—</h2><p id="tcs-d-sub"></p></div>
+        <button type="button" class="tcs-d-close" data-close aria-label="Đóng">✕</button>
+      </header>
+      <div class="tcs-d-body" id="tcs-d-body"></div>
+    </div>
+  </aside>
+
+  <footer class="tci-site-footer"><div class="tci-footer-inner"><div class="tci-footer-top"><span class="tci-wordmark"><strong>THÀNH CÔNG</strong><span>INVESTING</span></span><div class="tci-footer-links"><a href="https://www.facebook.com/nha.trade.hoc/?locale=vi_VN" target="_blank" rel="noreferrer">Facebook</a><a href="https://t.me/mmto1b" target="_blank" rel="noreferrer">Telegram</a><a href="https://zalo.me/0977921597" target="_blank" rel="noreferrer">Zalo</a><a href="mailto:contact.nhatradehoc@gmail.com">Email</a></div></div><p class="tci-disclaimer">Thành Công Investing là website cá nhân của Bùi Thành Công và không phải website chính thức của Công ty Cổ phần Chứng khoán SSI. Nội dung trên website mang tính thông tin, không cấu thành cam kết lợi nhuận hoặc lời mời đầu tư. Hiệu suất quá khứ không đảm bảo kết quả trong tương lai.</p><div class="tci-footer-bottom"><span>© 2026 Thành Công Investing</span><span>Website cá nhân · SSI advisor code 3186</span></div></div></footer>
+
+  <script src="subpage-common.js"></script>
+  <script src="scripts/tci-score-config.js"></script>
+  <script type="module" src="scripts/tci-score.js"></script>
+</body>
+</html>

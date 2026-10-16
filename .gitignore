@@ -1,0 +1,11 @@
+.qa/
+node_modules/
+
+# Ban thu giao dien v3 (khong dung nua) - khong dua len web
+styles/v3.css
+scripts/v3/
+assets/hero/bui-thanh-cong.webp
+assets/photos/tci-community.jpg
+assets/photos/tci-consult.jpg
+assets/photos/tci-course-wide.jpg
+assets/photos/tci-skyline-wide.jpg

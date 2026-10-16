@@ -1,0 +1,23 @@
+{
+  "schemaVersion": 1,
+  "enabled": false,
+  "killSwitch": false,
+  "activeTheme": "tet-demo",
+  "features": {
+    "enhancedMotion": false
+  },
+  "notes": "Lịch và thông điệp dưới đây chỉ minh họa. Không dùng thời gian trên thiết bị làm hạn ưu đãi, giá hoặc điều khoản tài chính. Bản demo chỉ xem trên localhost/127.0.0.1.",
+  "themes": {
+    "tet-demo": {
+      "enabled": false,
+      "previewOnly": true,
+      "variant": "tet",
+      "startsAt": "2027-01-25T00:00:00+07:00",
+      "endsAt": "2027-02-20T23:59:59+07:00",
+      "title": "Chào Xuân · Bản xem thử",
+      "visualAsset": "../assets/campaigns/tet-motif.svg",
+      "decorations": ["hero-badge", "hero-motif"],
+      "assetCredit": "Motif SVG vẽ bằng mã riêng cho TCI, không dùng tài nguyên bên thứ ba."
+    }
+  }
+}
