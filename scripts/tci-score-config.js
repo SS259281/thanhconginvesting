@@ -4,7 +4,7 @@
  *   (Cloudflare Tunnel trỏ về máy đang chạy server).
  * - Khi mở trực tiếp từ máy chạy server (http://localhost:8000): dùng chính địa chỉ đó.
  * - Có thể ghi đè bằng tham số URL: cham-diem.html?api=http://192.168.1.10:8000
- * KHÔNG BAO GIỜ đặt khóa SSI ở frontend — khóa chỉ nằm trên máy chủ.
+ * KHÔNG BAO GIỜ đặt khóa API của nguồn dữ liệu ở frontend — khóa chỉ nằm trên máy chủ.
  */
 (function () {
   const h = location.hostname;

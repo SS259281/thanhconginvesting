@@ -290,19 +290,19 @@ body.tci-journey-enabled #private-pathways[data-journey-section] .private-pathwa
   top: 24px;
   right: 16px;
 }
-body.tci-journey-enabled #private-ssi[data-journey-section] .private-benefit-grid {
+body.tci-journey-enabled #private-account[data-journey-section] .private-benefit-grid {
   grid-template-columns: repeat(2, minmax(0, 1fr));
   gap: 0 24px;
 }
-body.tci-journey-enabled #private-ssi[data-journey-section] .private-benefit-grid article {
+body.tci-journey-enabled #private-account[data-journey-section] .private-benefit-grid article {
   min-height: 225px;
 }
-body.tci-journey-enabled #private-ssi[data-journey-section] .private-promo-card {
+body.tci-journey-enabled #private-account[data-journey-section] .private-promo-card {
   grid-template-columns: minmax(180px, .65fr) minmax(0, 1fr);
   gap: 20px;
   padding: 16px;
 }
-body.tci-journey-enabled #private-ssi[data-journey-section] .private-promo-card > a {
+body.tci-journey-enabled #private-account[data-journey-section] .private-promo-card > a {
   grid-column: 2;
   justify-self: start;
 }
@@ -497,15 +497,15 @@ body.tci-journey-enabled .tci-journey-flow > .private-proof-strip {
     font-size: 3.1rem !important;
   }
   body.tci-journey-enabled #private-pathways[data-journey-section] .private-pathway-grid,
-  body.tci-journey-enabled #private-ssi[data-journey-section] .private-benefit-grid,
+  body.tci-journey-enabled #private-account[data-journey-section] .private-benefit-grid,
   body.tci-journey-enabled .private-process-section[data-journey-section] .private-process-grid {
     grid-template-columns: minmax(0, 1fr);
   }
-  body.tci-journey-enabled #private-ssi[data-journey-section] .private-promo-card {
+  body.tci-journey-enabled #private-account[data-journey-section] .private-promo-card {
     grid-template-columns: minmax(0, 1fr);
     padding: 14px;
   }
-  body.tci-journey-enabled #private-ssi[data-journey-section] .private-promo-card > a {
+  body.tci-journey-enabled #private-account[data-journey-section] .private-promo-card > a {
     grid-column: 1;
   }
   body.tci-journey-enabled #private-community[data-journey-section] .private-community-copy {

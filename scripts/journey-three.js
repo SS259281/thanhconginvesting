@@ -14,7 +14,7 @@ const SHOTS = [
   { p: 0.24, pos: [-6, 25, -38], look: [12, 40, -78] },     // 02 Kinh nghiệm: the tiered tower
   { p: 0.31, pos: [-2, 16, -80], look: [2, 4, -122] },
   { p: 0.38, pos: [0, 24, -86], look: [0, 0, -136] },       // 03 Lộ trình: the fork in the road
-  { p: 0.44, pos: [-12, 18, -116], look: [4, 4, -156] },    // SSI plaza
+  { p: 0.44, pos: [-12, 18, -116], look: [4, 4, -156] },    // account plaza
   { p: 0.49, pos: [-8, 31, -146], look: [4, 34, -198] },
   { p: 0.54, pos: [-16, 33, -158], look: [8, 33, -198] },  // 04 Năng lực: holographic chart
   { p: 0.62, pos: [-6, 40, -176], look: [14, 30, -214] },
@@ -282,7 +282,7 @@ export async function createJourneyScene(host) {
   towerBeacon.position.set(TOWER.x, tierY + 15, TOWER.z);
   scene.add(towerBeacon);
 
-  /* ---------- 03: fork paths and the SSI plaza ---------- */
+  /* ---------- 03: fork paths and the account plaza ---------- */
   const leftPath = new THREE.Mesh(keep(new THREE.TubeGeometry(forkLeft, 80, 0.22, 6)), glowMaterial(COLORS.red, 0.95, 2.4));
   const rightPath = new THREE.Mesh(keep(new THREE.TubeGeometry(forkRight, 80, 0.22, 6)), glowMaterial(COLORS.gold, 0.95, 2.4));
   scene.add(leftPath, rightPath);

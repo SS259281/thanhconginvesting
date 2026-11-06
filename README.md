@@ -1,6 +1,6 @@
 # Thành Công Investing
 
-Website tĩnh của Bùi Thành Công, mã chuyên gia SSI **3186**. Sửa trên nhánh `dev`, xem trước bằng `D:\WEB TCI\XEM-TRUOC-WEB.bat`. Khi duyệt xong, chạy `D:\WEB TCI\DAY-WEB-LEN-GITHUB.bat` để đẩy `dev` và cập nhật `main`, tức bản đang chạy trên thanhconginvesting.com.
+Website tĩnh của Bùi Thành Công, định vị là chuyên gia đầu tư độc lập (từ 11/2026 nội dung không gắn trực tiếp với một công ty chứng khoán cụ thể; nút mở tài khoản giữ nguyên liên kết đăng ký cũ). Sửa trên nhánh `dev`, xem trước bằng `D:\WEB TCI\XEM-TRUOC-WEB.bat`. Khi duyệt xong, chạy `D:\WEB TCI\DAY-WEB-LEN-GITHUB.bat` để đẩy `dev` và cập nhật `main`, tức bản đang chạy trên thanhconginvesting.com.
 
 ## Xem trên máy
 
@@ -48,3 +48,12 @@ node tests/journey.cjs
 Nếu Playwright/Chromium nằm ở runtime riêng, đặt `PLAYWRIGHT_MODULE`/`CHROMIUM_PATH` đúng đường dẫn có sẵn; không cần thêm thư viện vào website. Test chặn hoặc giả lập yêu cầu bên ngoài, xuất báo cáo/ảnh vào `.qa/`. Kết quả mô phỏng không xác nhận gửi email, thanh toán hay dịch vụ QR thật.
 
 Đọc [kiến trúc](docs/architecture-audit.md), [hành vi phải giữ](docs/behavior-contract.md), [rủi ro còn lại](docs/risk-register.md), [checklist nghiệm thu](docs/release-checklist.md) và [khôi phục](docs/rollback.md). [Báo cáo giai đoạn tách mã](docs/qa-report.md) ghi kết quả trước khi đổi giao diện; kết quả giao diện mới ở [premium-upgrade](docs/premium-upgrade.md). Chưa có Lighthouse hoặc kiểm tra trên iOS/Android thật.
+
+## Định vị thương hiệu (11/2026)
+
+- Toàn bộ nội dung hiển thị đã viết lại theo hướng **chuyên gia đầu tư độc lập**. Không còn nêu tên công ty chứng khoán cụ thể ở tiêu đề, menu, nút và các mục giới thiệu.
+- Nút "Mở tài khoản" vẫn dùng liên kết đăng ký cũ, cấu hình ở `scripts/site-config.js` (`openAccountUrl`).
+- Mã giới thiệu chỉ còn xuất hiện trong các bước của hai trang hướng dẫn.
+- Trang hướng dẫn mới: `huong-dan-mo-tai-khoan.html` và `chuyen-nguoi-cham-soc.html`. Hai địa chỉ cũ `huong-dan-mo-tk-ssi.html` và `chuyen-ma-ssi.html` tự chuyển hướng sang trang mới.
+- Chân trang ghi rõ: việc mở tài khoản và giao dịch thực hiện tại công ty chứng khoán đối tác được cấp phép.
+- Ảnh chia sẻ mạng xã hội mới: `assets/brand/og-preview.png`.

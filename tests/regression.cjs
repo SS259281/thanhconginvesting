@@ -62,7 +62,7 @@ const check = async (name,fn) => { await fn(); results.push({name,status:'passed
     assert.match(await page.locator('[data-confirm-payment]').getAttribute('href'),/^https:\/\/t.me\/mmto1b\?text=/);
     await page.keyboard.press('Escape');assert(await register.evaluate(e=>e===document.activeElement));
   });
-  await check('SSI account reference and clipboard',async()=>{
+  await check('account-opening link unchanged',async()=>{
     const url=await page.evaluate(()=>{let opened='';const original=window.open;window.open=(u)=>{opened=u;return null};[...document.querySelectorAll('button')].find(b=>b.textContent.trim()==='Mở tài khoản ngay').click();window.open=original;return opened;});
     assert.equal(url,'https://www.ssi.com.vn/khach-hang-ca-nhan/mo-tai-khoan?mgm=3186');
   });
@@ -110,7 +110,7 @@ const check = async (name,fn) => { await fn(); results.push({name,status:'passed
     await page.screenshot({path:path.join(output,'preview-original-mobile.png'),animations:'disabled'});
     await page.setViewportSize({width:1440,height:900});await page.screenshot({path:path.join(output,'preview-original-desktop.png'),animations:'disabled'});
   });
-  for(const name of ['huong-dan-mo-tk-ssi.html','chuyen-ma-ssi.html','goc-nhin.html'])await check('subpage '+name,async()=>{
+  for(const name of ['huong-dan-mo-tai-khoan.html','chuyen-nguoi-cham-soc.html','goc-nhin.html'])await check('subpage '+name,async()=>{
     await page.setViewportSize({width:390,height:844});await page.goto(new URL(name,base).href,{waitUntil:'networkidle'});assert(await page.locator('h1').count());assert.equal(await page.locator('.tci-chat-launcher').count(),1);
     const menu=page.locator('.tci-menu-button');await menu.click();assert.equal(await menu.getAttribute('aria-expanded'),'true');await page.keyboard.press('Escape');assert.equal(await menu.getAttribute('aria-expanded'),'false');assert(await menu.evaluate(e=>e===document.activeElement));
     await page.locator('.tci-chat-launcher').click();await page.keyboard.press('Escape');assert(await page.locator('.tci-chat-launcher').evaluate(e=>e===document.activeElement));assert.equal(await page.evaluate(()=>document.documentElement.scrollWidth>innerWidth),false);

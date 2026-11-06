@@ -69,16 +69,16 @@ export function initNavigation() {
   document.querySelectorAll('button').forEach((button) => {
     if (button.closest('.private-chat-panel, .tci-payment-modal')) return;
     const label = button.textContent?.trim() || '';
-    if (/Mở (?:mới )?tài khoản|Mở tài khoản SSI/i.test(label)) {
+    if (/Mở (?:mới )?tài khoản/i.test(label)) {
       button.addEventListener('click', () => window.open(SITE_CONFIG.openAccountUrl, '_blank', 'noopener,noreferrer'));
     }
     if (/Sao chép mã/i.test(label)) {
       button.addEventListener('click', async () => {
         const copied = await copyText(SITE_CONFIG.advisorCode);
         if (copied) {
-          button.textContent = 'Đã sao chép mã 3186';
-          showNotice('Đã sao chép mã 3186');
-        } else showNotice('Không sao chép được. Mã chuyên gia: 3186.');
+          button.textContent = 'Đã sao chép mã giới thiệu';
+          showNotice('Đã sao chép mã giới thiệu');
+        } else showNotice(`Không sao chép được. Mã giới thiệu: ${SITE_CONFIG.advisorCode}.`);
       });
     }
     if (/Đang có tài khoản\?/i.test(label)) {

@@ -7,7 +7,7 @@ const ease = t => t * t * (3 - 2 * t);
 const CHAPTERS = {
   'private-principles': ['01', 'Nguyên tắc', 'Giữa nhiễu thông tin, bắt đầu từ một quy trình.'],
   'private-about': ['02', 'Kinh nghiệm', 'Nhiều lớp thị trường, một nguyên tắc.'],
-  'private-pathways': ['03', 'SSI 3186', 'Hai lối vào, cùng một điểm đến.'],
+  'private-pathways': ['03', 'Tài khoản', 'Hai lối vào, cùng một điểm đến.'],
   'private-proof': ['04', 'Năng lực', 'Kết quả và rủi ro, nhìn cả hai.'],
   'private-service': ['05', 'Đồng hành', 'Không ai đi đường dài một mình.'],
   'private-process': ['06', 'Bắt đầu', 'Bốn bước tới một kế hoạch rõ ràng.'],
@@ -124,7 +124,7 @@ export function initJourney() {
       document.body.dataset.tciStoryLayout = point.layout;
       links.forEach(link => {
         const target = link.getAttribute('href').slice(1);
-        const current = target === point.id || (point.id === 'private-ssi' && target === 'private-pathways')
+        const current = target === point.id || (point.id === 'private-account' && target === 'private-pathways')
           || (point.id === 'private-community' && target === 'private-service')
           || (point.id === 'private-insights' && target === 'private-service');
         link.classList.toggle('is-current', current);

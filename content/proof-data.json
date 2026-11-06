@@ -8,7 +8,7 @@
   "tabs": [
     {
       "key": "ssi",
-      "label": "Tư vấn tại SSI",
+      "label": "Tư vấn chứng khoán",
       "id": "private-proof-tab-ssi"
     },
     {
@@ -24,7 +24,7 @@
   ],
   "ssi": {
     "kicker": "Số liệu cập nhật",
-    "title": "Quy mô đang được hỗ trợ tại SSI",
+    "title": "Quy mô khách hàng đang được hỗ trợ",
     "description": "Dữ liệu phản ánh quy mô tại thời điểm chụp nguồn, không phải lời hứa về kết quả đầu tư.",
     "customers": 225,
     "customersLabel": "khách hàng đang hỗ trợ",

@@ -21,31 +21,30 @@ const selectors = {
 const originalDetails = {
   'private-proof-strip': '866f2e5160cb9b8b47d82d9363ee700c702868519220c9fe2ae58e5ad8da1607',
   'private-problem-section': 'dc6715f9d699ced88a6bc2b8f9d191140a180cc67cd0918987fb6719cb51942d',
-  'private-about': '89621fb82a36fbf73a6637fac43ab19712f057ff93ad35ebd425abde96ecdd2a',
-  'private-pathways': '20fbc04c8167292ecd3d5d1f632e7dac3d5bd83f6dc51d54b7d44be112b81678',
-  'private-benefits': '5019f629b221162776ad0b44e428e16920b1f9782cffd39ea8d23c2e08be3777',
+  'private-about': 'df8bd4b6ea403c0f42ca5aab16ae7eb074beefb6f7d76db278f1fa4340556713',
+  'private-pathways': 'a232a298e798f49c5edd43a64cd49d7de07d7e6b99bd20b0856957d2e4e0c381',
+  'private-benefits': 'a2b8cfc294114541c02d6bc1d8d04b70ee54ff518d9a4793ceaf0416e24dcd72',
   'private-community-section': '5f9480c7131b35358fd6d0a6aca7d7b1896578bf9b7388a0f667b816ee7f82e8',
-  'private-proof-section': 'ff97a2288d120b37c211d13987a6a3d433a3fb2861793aababb97d96cd2bb194',
-  'private-course': '17f9640069918c00ff365cc1245b134b54fce0bf95c6f366a583939e94392eea',
+  'private-proof-section': '17b4ac906fbcb81d46105849ea8859e1680f7772f294567cd352a0fbaedd347d',
+  'private-course': '77650bd1c9574f8cd8df85190a6decef1f2b0af9dd3ea44cfc5f13960b8d7a4a',
   'private-service': '6e08d5b8bf749c7316145a3d52063cefcc009a3d861d68de0fc0ec94bb70af7e',
-  'private-insights-section': '557b095e7e55a7027040a90f900fa57211c9eadf9ece84489f60224f07318338',
-  'private-process-section': 'aeca15c4e4244f2f3471350c15b36a5532127a83d5c09dbff9b19f4dfb6fdab8',
-  'private-lead-section': 'a8dd9750551596834a885a7e206f7ca02f5b5df79fb014226e618b9b48d9962a',
-  'private-faq': 'f0722000957c5dc952e09f57ac0e1b0b41ccdae4e9388e5764d0c11326da639d',
-  'private-final-cta': '9d85765e3c12df9717bb7f267dc21f1e3683a3b5622b9eb63e49f71a2c789679'
+  'private-insights-section': '1aa88f984fd902f07f7adb31ede592ec8ceb8a9f362ccac61458521f11e69a28',
+  'private-process-section': '151ac1d5fcc2ccbba2380cc19106e420fb8559744a5005e937861bda9ba72fff',
+  'private-lead-section': 'fc52cf0a81cdac91088a8176df5abfa1332823e41eacbbf2206e516a7954601f',
+  'private-faq': 'f7c6dedda40e7ced3aa6c5ccf86195c0d0741ed5b0b6b0bc24bb0a26d516b834',
+  'private-final-cta': '17b1e101be1040fb3ec336e4d56acc20ee7cb47839cb249b9d585271f8b9b31a'
 };
 const lessonPdf='./%C4%90%E1%BA%A6U%20T%C6%AF%20TH%E1%BB%B0C%20CHI%E1%BA%BEN%20%20BU%E1%BB%94I%201%20NGUY%C3%8AN%20L%C3%9D%20V%E1%BA%ACN%20%C4%90%E1%BB%98NG%20C%E1%BB%A6A%20TH%E1%BB%8A%20TR%C6%AF%E1%BB%9CNG%20V%C3%80%20C%C3%81C%20TH%C3%80NH%20PH%E1%BA%A6N%20THAM%20GIA%20TH%E1%BB%8A%20TR%C6%AF%E1%BB%9CNG%20(FINAL).pdf';
 const originalUrls={
-  'private-pathways':['href:chuyen-ma-ssi.html'],
-  'private-benefits':['href:https://www.ssi.com.vn/tin-tuc/tin-tuc-su-kien-ssi/chuong-trinh-khuyen-mai-song-lon-can-tau-lon','src:assets/brand/ssi-campaign.png'],
+  'private-pathways':['href:chuyen-nguoi-cham-soc.html'],
   'private-community-section':['href:https://zalo.me/g/awu9n0xkftxzzocsrjlw'],
   'private-proof-section':['src:IMG_1261.jpg'],
   'private-course':['href:#private-course-schedule','href:'+lessonPdf,'href:'+lessonPdf],
   'private-service':['href:https://zalo.me/0977921597'],
-  'private-insights-section':['href:chuyen-ma-ssi.html','href:goc-nhin.html','href:goc-nhin.html','href:huong-dan-mo-tk-ssi.html','src:assets/photos/tci-insight-iboard.jpg','src:assets/photos/tci-insight-library.jpg','src:assets/photos/tci-insight-open.jpg'],
+  'private-insights-section':['href:chuyen-nguoi-cham-soc.html','href:goc-nhin.html','href:goc-nhin.html','href:huong-dan-mo-tai-khoan.html','src:assets/photos/tci-insight-iboard.jpg','src:assets/photos/tci-insight-library.jpg','src:assets/photos/tci-insight-open.jpg'],
   'private-lead-section':['href:https://zalo.me/0977921597','href:mailto:contact.nhatradehoc@gmail.com','href:tel:+84977921597'],
-  'private-faq':['href:https://www.ssi.com.vn/khach-hang-ca-nhan/quan-ly-tai-khoan-kieu-xac-thuc-iboard-pro','href:https://zalo.me/0977921597'],
-  'private-final-cta':['href:https://zalo.me/0977921597']
+  'private-faq':['href:chuyen-nguoi-cham-soc.html','href:https://zalo.me/0977921597'],
+  'private-final-cta':['href:https://zalo.me/0977921597','href:huong-dan-mo-tai-khoan.html']
 };
 // Balanced extraction handles original sections moved into nested act wrappers.
 const extractSections=html=>{
@@ -145,7 +144,7 @@ const staticPoint=async(page,selector)=>{
     });
     const views=[];
     await check('native original sections drive different real 3D camera views and reverse deterministically',async()=>{
-      const ids=['private-principles','private-about','private-pathways','private-ssi','private-proof','private-community','private-process'];
+      const ids=['private-principles','private-about','private-pathways','private-account','private-proof','private-community','private-process'];
       for(const id of ids){const position=await nativePoint(page,id);views.push(await capture(page,id,position));}
       assert(new Set(views.map(view=>view.hash)).size>=6,'At least six native camera views differ');
       for(const id of [...ids].reverse()){

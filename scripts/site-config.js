@@ -1,8 +1,8 @@
 export const SITE_CONFIG = Object.freeze({
   advisorCode: '3186',
   openAccountUrl: 'https://www.ssi.com.vn/khach-hang-ca-nhan/mo-tai-khoan?mgm=3186',
-  openAccountGuide: 'huong-dan-mo-tk-ssi.html',
-  transferGuide: 'chuyen-ma-ssi.html',
+  openAccountGuide: 'huong-dan-mo-tai-khoan.html',
+  transferGuide: 'chuyen-nguoi-cham-soc.html',
   zaloUrl: 'https://zalo.me/0977921597',
   communityUrl: 'https://zalo.me/g/awu9n0xkftxzzocsrjlw',
   phoneUrl: 'tel:+84977921597',

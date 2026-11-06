@@ -65,15 +65,15 @@ export function initChat() {
   };
   const backMenu = { key: 'menu', label: 'Về menu chính' };
   const mainActions = [
-    { key: 'open', label: 'Mở tài khoản SSI' },
-    { key: 'existing', label: 'Tôi đã có tài khoản SSI' },
+    { key: 'open', label: 'Mở tài khoản' },
+    { key: 'existing', label: 'Tôi đã có tài khoản' },
     { key: 'other', label: 'Tôi đang ở công ty khác' },
     { key: 'course', label: 'Hỏi về khóa học' },
     { key: 'contact', label: 'Trao đổi trực tiếp' },
   ];
   const showMenu = (returning = false) => {
     if (returning) addMessage('Bạn muốn tiếp tục nhu cầu trước đó hay chọn nội dung khác?');
-    else if (!messages.children.length) addMessage('Chào bạn. Tôi là Thành Công AI — trợ lý thông tin trên website. Tôi có thể hướng dẫn lộ trình tại SSI, tìm hiểu khóa học hoặc kết nối trực tiếp với Thành Công. Tôi không đưa khuyến nghị mua/bán. Bạn muốn tìm hiểu nội dung nào trước?');
+    else if (!messages.children.length) addMessage('Chào bạn. Tôi là Thành Công AI — trợ lý thông tin trên website. Tôi có thể hướng dẫn mở hoặc chuyển tài khoản, tìm hiểu khóa học hoặc kết nối trực tiếp với Thành Công. Tôi không đưa khuyến nghị mua/bán. Bạn muốn tìm hiểu nội dung nào trước?');
     setActions(mainActions);
   };
   const showLead = () => {
@@ -81,8 +81,8 @@ export function initChat() {
     quickActions.replaceChildren();
     const form = document.createElement('form');
     form.className = 'tci-chat-lead';
-    form.innerHTML = `<label><span>Tôi nên xưng hô với bạn thế nào?</span><input name="name" autocomplete="name" required placeholder="Họ và tên"/></label><label><span>Nhu cầu chính</span><select name="need" required><option value="">Chọn nhu cầu</option><option>Mở tài khoản SSI</option><option>Chuyển mã chuyên gia</option><option>Khóa học</option><option>Dịch vụ chuyên sâu</option></select></label><label><span>Kênh liên hệ</span><select name="channel" required><option value="Zalo">Zalo</option><option value="Điện thoại">Điện thoại</option><option value="Email">Email</option></select></label><label><span>Số điện thoại hoặc email</span><input name="contact" required placeholder="Thông tin liên hệ"/></label><label class="tci-chat-contact"><input type="checkbox" required/> Tôi đồng ý để Thành Công Investing sử dụng thông tin này nhằm liên hệ về nhu cầu đã chọn.</label><button type="submit">Điền vào biểu mẫu tư vấn</button>`;
-    const needLabels = { 'Mở tài khoản': 'Mở tài khoản SSI', 'Chuyển mã': 'Chuyển mã chuyên gia', 'Khóa học': 'Khóa học', 'Ủy thác đầu tư': 'Dịch vụ chuyên sâu' };
+    form.innerHTML = `<label><span>Tôi nên xưng hô với bạn thế nào?</span><input name="name" autocomplete="name" required placeholder="Họ và tên"/></label><label><span>Nhu cầu chính</span><select name="need" required><option value="">Chọn nhu cầu</option><option>Mở tài khoản</option><option>Chuyển người chăm sóc tài khoản</option><option>Khóa học</option><option>Dịch vụ chuyên sâu</option></select></label><label><span>Kênh liên hệ</span><select name="channel" required><option value="Zalo">Zalo</option><option value="Điện thoại">Điện thoại</option><option value="Email">Email</option></select></label><label><span>Số điện thoại hoặc email</span><input name="contact" required placeholder="Thông tin liên hệ"/></label><label class="tci-chat-contact"><input type="checkbox" required/> Tôi đồng ý để Thành Công Investing sử dụng thông tin này nhằm liên hệ về nhu cầu đã chọn.</label><button type="submit">Điền vào biểu mẫu tư vấn</button>`;
+    const needLabels = { 'Mở tài khoản': 'Mở tài khoản', 'Chuyển người chăm sóc tài khoản': 'Chuyển người chăm sóc tài khoản', 'Khóa học': 'Khóa học', 'Ủy thác đầu tư': 'Dịch vụ chuyên sâu' };
     form.elements.namedItem('need').value = needLabels[suggestedNeed] || '';
     quickActions.append(form);
     form.elements.namedItem('name').focus({ preventScroll: true });
@@ -100,7 +100,7 @@ export function initChat() {
         return;
       }
       const data = new FormData(form);
-      const mappings = { 'Mở tài khoản SSI': 'Mở tài khoản', 'Chuyển mã chuyên gia': 'Chuyển mã', 'Khóa học': 'Khóa học', 'Dịch vụ chuyên sâu': 'Ủy thác đầu tư' };
+      const mappings = { 'Mở tài khoản': 'Mở tài khoản', 'Chuyển người chăm sóc tài khoản': 'Chuyển người chăm sóc tài khoản', 'Khóa học': 'Khóa học', 'Dịch vụ chuyên sâu': 'Ủy thác đầu tư' };
       const name = lead.elements.namedItem('name');
       const need = lead.elements.namedItem('need');
       const phone = lead.elements.namedItem('phone');
@@ -134,18 +134,18 @@ export function initChat() {
   const responses = {
     open: () => {
       suggestedNeed = 'Mở tài khoản';
-      addMessage('Bạn có thể mở tài khoản SSI qua liên kết chính thức có gắn sẵn mã chuyên gia 3186. Quy trình gồm mở liên kết, tạo tài khoản, hoàn tất eKYC và ký hợp đồng điện tử. Bạn không cần gửi OTP, mật khẩu hoặc ảnh giấy tờ cho tôi.', 'assistant', { href: SITE_CONFIG.openAccountGuide, label: 'Xem hướng dẫn mở tài khoản SSI' });
-      setActions([{ key: 'openlink', label: 'Mở liên kết SSI' }, { key: 'benefits', label: 'Xem quyền lợi' }, { key: 'contact', label: 'Cần hỗ trợ' }, backMenu]);
+      addMessage('Bạn có thể mở tài khoản chứng khoán trực tuyến qua liên kết đăng ký của Thành Công. Quy trình gồm mở liên kết, tạo tài khoản, hoàn tất eKYC và ký hợp đồng điện tử. Bạn không cần gửi OTP, mật khẩu hoặc ảnh giấy tờ cho tôi.', 'assistant', { href: SITE_CONFIG.openAccountGuide, label: 'Xem hướng dẫn mở tài khoản' });
+      setActions([{ key: 'openlink', label: 'Mở liên kết đăng ký' }, { key: 'benefits', label: 'Xem quyền lợi' }, { key: 'contact', label: 'Cần hỗ trợ' }, backMenu]);
     },
     existing: () => {
-      suggestedNeed = 'Chuyển mã';
-      addMessage('Bạn có thể gửi yêu cầu chuyển mã chuyên gia tư vấn về Bùi Thành Công — mã 3186 — trên SSI iBoard Pro. Bạn muốn xem hướng dẫn hay cần hỗ trợ trực tiếp?');
-      setActions([{ key: 'transfer', label: 'Xem hướng dẫn chuyển mã' }, { key: 'zalo', label: 'Nhắn Zalo' }, { key: 'sent', label: 'Tôi đã gửi yêu cầu' }, backMenu]);
+      suggestedNeed = 'Chuyển người chăm sóc tài khoản';
+      addMessage('Bạn có thể gửi yêu cầu đổi người chăm sóc tài khoản về Bùi Thành Công ngay trên ứng dụng giao dịch của công ty chứng khoán. Bạn muốn xem hướng dẫn hay cần hỗ trợ trực tiếp?');
+      setActions([{ key: 'transfer', label: 'Xem hướng dẫn chuyển' }, { key: 'zalo', label: 'Nhắn Zalo' }, { key: 'sent', label: 'Tôi đã gửi yêu cầu' }, backMenu]);
     },
     other: () => {
       suggestedNeed = 'Mở tài khoản';
-      addMessage('Bạn có thể mở tài khoản SSI nếu chưa có, hoặc chuyển mã chuyên gia 3186, sau đó nộp tiền và bắt đầu kế hoạch đầu tư tại SSI.');
-      setActions([{ key: 'open', label: 'Mở tài khoản SSI' }, { key: 'zalo', label: 'Hỏi về chuyển tài sản' }, { key: 'zalo', label: 'Nhắn Zalo' }, backMenu]);
+      addMessage('Bạn có thể mở thêm một tài khoản mới qua liên kết của Thành Công, nộp tiền và bắt đầu kế hoạch đầu tư; tài khoản cũ vẫn giữ nguyên.');
+      setActions([{ key: 'open', label: 'Mở tài khoản' }, { key: 'zalo', label: 'Hỏi về chuyển tài sản' }, { key: 'zalo', label: 'Nhắn Zalo' }, backMenu]);
     },
     course: () => {
       suggestedNeed = 'Khóa học';
@@ -157,7 +157,7 @@ export function initChat() {
       setActions([{ key: 'fees', label: 'Phí & margin' }, { key: 'openlink', label: 'Mở tài khoản ngay' }, { key: 'zalo', label: 'Nhắn Zalo' }, backMenu]);
     },
     fees: () => {
-      addMessage('Thông tin trên website mang tính tham khảo và có điều kiện áp dụng. Phí 0,15% áp dụng cho khách hàng có NAV từ 100 triệu đồng; margin theo chương trình hiện hành của SSI. Mức phí, lãi suất, hạn mức và thời hạn chương trình cần được SSI xác nhận còn hiệu lực tại thời điểm đăng ký.');
+      addMessage('Thông tin trên website mang tính tham khảo và có điều kiện áp dụng. Phí 0,15% áp dụng cho khách hàng có NAV từ 100 triệu đồng; margin theo chương trình hiện hành của công ty chứng khoán. Mức phí, lãi suất, hạn mức và thời hạn chương trình cần được xác nhận còn hiệu lực tại thời điểm đăng ký.');
       setActions([{ key: 'openlink', label: 'Mở tài khoản' }, { key: 'zalo', label: 'Nhắn Zalo để kiểm tra' }, backMenu]);
     },
     coursecontent: () => {
@@ -174,11 +174,11 @@ export function initChat() {
       setActions([{ key: 'zalo', label: 'Mở Zalo' }, { key: 'lead', label: 'Để lại thông tin' }, { key: 'call', label: 'Gọi 0977 921 597' }, backMenu]);
     },
     transfer: () => {
-      addMessage('Bạn có thể gửi yêu cầu chuyển mã theo hướng dẫn chính thức của SSI hoặc liên hệ Thành Công để được hỗ trợ.');
-      setActions([{ key: 'transferlink', label: 'Mở hướng dẫn SSI' }, { key: 'zalo', label: 'Nhắn Zalo' }, backMenu]);
+      addMessage('Bạn có thể gửi yêu cầu theo hướng dẫn từng bước hoặc liên hệ Thành Công để được hỗ trợ.');
+      setActions([{ key: 'transferlink', label: 'Mở hướng dẫn' }, { key: 'zalo', label: 'Nhắn Zalo' }, backMenu]);
     },
     sent: () => {
-      addMessage('Cảm ơn bạn. Khi SSI xác nhận hoàn tất, bạn có thể nhắn Thành Công để kiểm tra kết nối hỗ trợ.');
+      addMessage('Cảm ơn bạn. Khi công ty chứng khoán xác nhận hoàn tất, bạn có thể nhắn Thành Công để kiểm tra kết nối hỗ trợ.');
       setActions([{ key: 'zalo', label: 'Nhắn Zalo' }, backMenu]);
     },
   };
@@ -203,12 +203,12 @@ export function initChat() {
       return;
     }
     if (/mua|bán|mã nào|cổ phiếu nào|điểm vào|chốt lời/.test(normalized)) {
-      addMessage('Tôi không thể đưa khuyến nghị mua/bán hoặc cam kết mức lợi nhuận cho một mã cụ thể. Tôi có thể giúp bạn tìm hiểu nguyên tắc quản trị rủi ro, quy trình hỗ trợ tại SSI hoặc kết nối trực tiếp với Thành Công.');
+      addMessage('Tôi không thể đưa khuyến nghị mua/bán hoặc cam kết mức lợi nhuận cho một mã cụ thể. Tôi có thể giúp bạn tìm hiểu nguyên tắc quản trị rủi ro, quy trình mở/chuyển tài khoản hoặc kết nối trực tiếp với Thành Công.');
       setActions([{ key: 'contact', label: 'Trao đổi trực tiếp' }, backMenu]);
       return;
     }
     if (/mở tài khoản|ekyc|đăng ký ssi/.test(normalized)) return responses.open();
-    if (/chuyển mã|đã có ssi|đổi môi giới|3186/.test(normalized)) return responses.existing();
+    if (/chuyển mã|chuyển người chăm sóc|đổi chuyên viên|đã có ssi|đổi môi giới|3186/.test(normalized)) return responses.existing();
     if (/công ty khác|vps|vnd|hsc|tcbs|dnse/.test(normalized)) return responses.other();
     if (/khóa học|học phí|giáo trình|lịch học/.test(normalized)) return responses.course();
     if (/phí|margin|lãi suất|ưu đãi/.test(normalized)) return responses.fees();
@@ -219,7 +219,7 @@ export function initChat() {
       setActions([{ key: 'zalo', label: 'Mở Zalo' }, { key: 'call', label: 'Gọi điện' }, backMenu]);
     } else {
       addMessage('Tôi chưa hiểu chính xác ý bạn. Bạn có thể chọn một nội dung gần nhất bên dưới hoặc viết lại câu hỏi ngắn hơn.');
-      setActions([{ key: 'open', label: 'Mở tài khoản' }, { key: 'existing', label: 'Chuyển mã' }, { key: 'course', label: 'Khóa học' }, { key: 'fees', label: 'Phí & margin' }, { key: 'contact', label: 'Gặp Thành Công' }]);
+      setActions([{ key: 'open', label: 'Mở tài khoản' }, { key: 'existing', label: 'Chuyển tài khoản' }, { key: 'course', label: 'Khóa học' }, { key: 'fees', label: 'Phí & margin' }, { key: 'contact', label: 'Gặp Thành Công' }]);
     }
   };
   inputForm.addEventListener('submit', (event) => {
